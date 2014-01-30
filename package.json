@@ -4,11 +4,20 @@
   "description": "Examples of JavaScript Testing",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server/server.js"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/joshball/testing-javascript"
+  },
+  "dependencies": {
+    "grunt-contrib": "~0.7.0",
+    "express": "3.4.8",
+    "ejs": "*",
+    "grunt-express-server": "~0.4.11",
+    "cli-color": "~0.2.3",
+    "q": "~1.0.0"
   },
   "keywords": [
     "javascript",
@@ -20,8 +29,8 @@
     "jasmine"
   ],
   "author": {
-      "name" : "Joshua Ball",
-      "email" : "joshua.g.s.ball@gmail.com"
+    "name": "Joshua Ball",
+    "email": "joshua.g.s.ball@gmail.com"
   },
   "license": "MIT",
   "bugs": {
