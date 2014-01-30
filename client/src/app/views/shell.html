@@ -1,0 +1,12 @@
+﻿<div>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <a class="brand" data-bind="attr: { href: router.navigationModel()[0].hash }">
+                <i class="icon-home"></i>
+                <span>Storage Server</span>
+            </a>
+        </div>
+    </div>
+    
+    <div class="container-fluid page-host" data-bind="router: { transition:'entrance', cacheViews:true }"></div>
+</div>
