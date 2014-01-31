@@ -8,13 +8,20 @@ var indexController = function(request, response){
     logger.trace('');
     logger.trace('===> INDEX CONTROLLER <====');
 
-    ss.usage().then(function(storage){
-        logger.trace('index.ss.usage returned storage: ', storage);
-        logger.data('index returning with storage:', storage);
-        response.render('index', {storage: storage});
+    ss.get().then(function(storageData){
+        logger.data('index returning with storage:', storageData);
+        response.render('index', {storageData: JSON.stringify(storageData)});
     });
 };
 
+var prototypeController = function(request, response){
+    logger.trace('');
+    logger.trace('===> PROTOTYPE CONTROLLER <====');
+
+    response.render('prototype');
+};
+
 module.exports = {
-    index: indexController
+    index: indexController,
+    prototype: prototypeController
 };

@@ -3,6 +3,8 @@
 module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib');
     grunt.loadNpmTasks('grunt-express-server');
+    grunt.loadNpmTasks('grunt-mocha');
+    grunt.loadNpmTasks('grunt-karma');
 //    grunt.loadNpmTasks('grunt-contrib-clean');
 //    grunt.loadNpmTasks('grunt-contrib-copy');
 //    grunt.loadNpmTasks('grunt-express-server');
@@ -68,10 +70,40 @@ module.exports = function (grunt) {
                 }
             }
         },
+        karma: {
+            options: {
+                configFile: 'client/test/karma/karma.conf.js'
+            },
+            tdd: {
+                background: false,
+                singleRun: false,   // keep watching/running
+                autoWatch: true
+            },
+            build: {
+                singleRun: true,    // just run once
+                autoWatch: false    // no watching
+            },
+            server: {
+                background: false,
+                singleRun: true,   // keep running
+                autoWatch: false    // watch task does this
+            }
+        },
+        mocha: {
+            options: {
+                mocha: {
+                    ignoreLeaks: false
+                },
+                log: true,
+                timeout: 5000,
+                run: true
+            },
+            all: [ "client/test/mocha-requirejs/index.html" ]
+        },
         watch: {
-            express: {
-                files: ['**/*.js', '**/*.jshtml', '**/*.css'],
-                tasks: ['express:dev'],
+            tdd: {
+                files: ['server/**/*.js', 'client/**/*.js', '**/*.css'],
+                tasks: ['karma:server', 'express:dev'],
                 options: {
                     span: false
                 }
@@ -82,8 +114,9 @@ module.exports = function (grunt) {
 
 
     //grunt.log.writeln("\n\nGRUNT",grunt.task);
-    grunt.registerTask('build', [ 'clean', 'copy' ]);
-    grunt.registerTask('server', [ 'express:dev', 'watch' ])
+    grunt.registerTask('build', [ 'clean', 'copy', 'karma:build' ]);
+    grunt.registerTask('tdd', [  'karma:tdd' ])
+    grunt.registerTask('server', [ 'karma:server', 'express:dev', 'watch' ])
 
 
 };

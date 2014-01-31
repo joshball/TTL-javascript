@@ -55,6 +55,7 @@ srp.dump();
 
 
 app.get('/', pageControllers.index);
+app.get('/prototype', pageControllers.prototype);
 
 http.createServer(app).listen(app.get('port'), function(){
   logger.warn('Express server listening on port ' + app.get('port'));

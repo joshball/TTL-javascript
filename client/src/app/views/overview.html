@@ -1,5 +1,12 @@
-﻿<h2>Your storage</h2>
+﻿<div class="row-fluid">
+    <div class="span4">
+        <div data-bind="compose:'viewmodels/sidebar'"></div>
+    </div>
+    <div class="span8">
+        <ul>
+            <li>You have used <span data-bind="text: used"></span> of <span data-bind="text: total"></span> bytes</li>
+        </ul>
+        <div data-bind="compose:'viewmodels/piclist'"></div>
+    </div>
+</div>
 
-<ul>
-    <li>You have used <span data-bind="text: used"></span> of <span data-bind="text: total"></span> bytes</li>
-</ul>

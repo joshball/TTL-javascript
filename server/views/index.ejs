@@ -41,10 +41,7 @@
         </div>
 
         <script>
-            window.ss = {
-                used: <%= storage.used %>,
-                total: <%= storage.total %>
-            }
+            window.ss = <%- storageData %>
         </script>
         <script src="assets/scripts/vendor/require/require.js" data-main="assets/scripts/app/main"></script>
     </body>
